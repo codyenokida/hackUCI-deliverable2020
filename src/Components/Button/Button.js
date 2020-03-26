@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Button, withStyles } from '@material-ui/core';
 
-const SubmitButton = withStyles({
+const CustomButton = withStyles({
     root: {
         background: 'linear-gradient(0deg, rgba(255,108,129,1) 0%, rgba(255,123,92,1) 100%)',
         borderRadius: 20,
@@ -17,6 +17,22 @@ const SubmitButton = withStyles({
     },
 })(Button);
 
-export default function buttonObj() {
-    return <SubmitButton>Submit</SubmitButton>;
+class SubmitButton extends React.Component {
+    constructor(props) {
+        super(props)
+        this.click = this.click.bind(this)
+    }
+
+    click() {
+        this.props.onClick();
+    }
+
+    render() {
+        return(
+            <CustomButton onClick={this.click}>{this.props.children}</CustomButton>
+        )
+    }
 }
+
+
+export default SubmitButton

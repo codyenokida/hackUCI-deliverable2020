@@ -27,7 +27,7 @@ const TextInput = withStyles(theme => ({
     },
 }))(InputBase);
 
-const InputLabelText = withStyles(() => ({
+const LabelText = withStyles(() => ({
     root: {
       fontSize: 20,
       fontWeight: 900,
@@ -35,15 +35,34 @@ const InputLabelText = withStyles(() => ({
     },
 }))(InputLabel);
 
-const test = ({ rows, id, children }) => {
-    return(
-        <FormControl className={styles.form}>
-            <InputLabelText shrink htmlFor={id}>
-                {children}
-            </InputLabelText>
-            <TextInput placeholder={children} id={id} multiline rows={rows}/>
-        </FormControl>
-    )
+class InputForm extends React.Component {
+    constructor(props) {
+        super(props) 
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        const text = event.target.value;
+        this.props.onChange(event, this.props.id, text);
+    }
+
+    render() {
+        return(
+            <FormControl className={styles.form}>
+                <LabelText shrink htmlFor={this.props.id}>
+                    {this.props.children}
+                </LabelText>
+                <TextInput 
+                    placeholder={this.props.children} 
+                    id={this.props.id} 
+                    multiline 
+                    rows={this.props.rows} 
+                    onChange={this.handleChange} 
+                    value={this.props.value}
+                    error={this.props.error}/>
+            </FormControl>
+        )
+    }
 }
 
-export default test
+export default InputForm
