@@ -18,4 +18,10 @@
     .formBackground {
         width: 300px;
     }
+
+    .formBackground h2 {
+        letter-spacing: 1px;
+        font-weight: 700;
+        padding: 25px 40px 10px 40px;
+    }
 }
