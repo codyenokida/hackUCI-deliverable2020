@@ -53,7 +53,7 @@ class Form extends React.Component {
                 <form className={styles.formBackground}>
                     <h2>Hack UCI Application</h2>
                     <Input id="name" rows="1" onChange={this.handleChange} inputRef={el => this.name = el} value={this.state.name}>Name</Input>
-                    <Input id="email" rows="1" onChange={this.handleChange} value={this.state.email} error={}>Email</Input>
+                    <Input id="email" rows="1" onChange={this.handleChange} value={this.state.email}>Email</Input>
                     <Input id="funfact" rows="3" onChange={this.handleChange} value={this.state.funfact}>Fun Fact</Input>
 
                     <SubmitButton onClick={this.submitForm}>Submit</SubmitButton>
