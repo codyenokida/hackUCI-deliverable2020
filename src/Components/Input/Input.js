@@ -43,12 +43,12 @@ class InputForm extends React.Component {
 
     handleChange(event) {
         const text = event.target.value;
-        this.props.onChange(event, this.props.id, text);
+        this.props.onChange(this.props.id, text);
     }
 
     render() {
         return(
-            <FormControl className={styles.form}>
+            <FormControl className={styles.form} error={this.props.error}>
                 <LabelText shrink htmlFor={this.props.id}>
                     {this.props.children}
                 </LabelText>
